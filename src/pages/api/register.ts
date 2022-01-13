@@ -4,7 +4,7 @@ import connectToDatabase from './database/db'
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   const db = await connectToDatabase(process.env.MONGODB_URI as string)
-  const collection = db.collection('login')
+  const collection = db.collection(process.env.MONGODB_COLLECTION as string)
 
   const { email, password } = req.body
 

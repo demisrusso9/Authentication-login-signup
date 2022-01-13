@@ -31,11 +31,11 @@ import { ApiData } from '../context/api'
 import { notify } from '../utils/notifications'
 
 export default function Register() {
-  const { login, register, email, password, setPassword, setEmail } =
-    useContext(ApiData)
+  const { login, register, email, password, setPassword, setEmail } = useContext(ApiData)
 
-  const checkEmail = (email: string) =>
-    email.search(/^[A-Za-z0-9+_.-]+@\w+.\w+.([\w]{2})/) < 0
+  const checkEmail = (email: string) => {
+    return email.trim().search(/^[A-Za-z0-9+_.-]+@\w+.\w+.([\w]{2})/) < 0
+  }
 
   const onSubmitRegister = (e: React.FormEvent) => {
     e.preventDefault()

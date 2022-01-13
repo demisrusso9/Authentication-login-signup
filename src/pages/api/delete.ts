@@ -4,7 +4,7 @@ import getConnectionDatabase from './database/db'
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   const db = await getConnectionDatabase(process.env.MONGODB_URI as string)
-  const collection = db.collection('login')
+  const collection = db.collection(process.env.MONGODB_COLLECTION as string)
 
   //@ts-ignore
   await collection.deleteOne({ _id: ObjectId(req.query.id) })
